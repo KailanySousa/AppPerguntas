@@ -1,3 +1,4 @@
+import 'package:app/components/questao.dart';
 import 'package:flutter/material.dart';
 
 main() => runApp(PerguntaApp());
