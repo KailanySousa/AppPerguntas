@@ -4,23 +4,23 @@ main() => runApp(PerguntaApp());
 
 class PerguntaApp extends StatefulWidget {
   @override
-  PerguntaAppState createState() => PerguntaAppState();
+  _PerguntaAppState createState() => _PerguntaAppState();
 }
 
 // classe que controla o estado do widget
-class PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+class _PerguntaAppState extends State<PerguntaApp> {
+  var _perguntaSelecionada = 0;
 
-  void responder() {
+  void _responder() {
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
-    print(perguntaSelecionada);
+    print(_perguntaSelecionada);
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> perguntas = [
+    final perguntas = [
       'Qual é a sua cor favorita?',
       'Qual é o seu animal favorito?'
     ];
@@ -32,18 +32,18 @@ class PerguntaAppState extends State<PerguntaApp> {
           ),
           body: Column(
             children: [
-              Text(perguntas.elementAt(perguntaSelecionada)),
+              Text(perguntas.elementAt(_perguntaSelecionada)),
               ElevatedButton(
                 child: Text('Resposta 1'),
-                onPressed: responder,
+                onPressed: _responder,
               ),
               ElevatedButton(
                 child: Text('Resposta 2'),
-                onPressed: () => responder(),
+                onPressed: () => _responder(),
               ),
               ElevatedButton(
                 child: Text('Resposta 3'),
-                onPressed: () => responder(),
+                onPressed: () => _responder(),
               ),
             ],
           )),
