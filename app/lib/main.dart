@@ -58,7 +58,18 @@ class _PerguntaAppState extends State<PerguntaApp> {
                   ...respostas.map((e) => Resposta(e, _responder)).toList(),
                 ],
               )
-            : null,
+            : Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(left: 10, right: 10),
+                child: Center(
+                  child: Text(
+                    'Só tenho duas coisas para dizer: Para béns!',
+                    style: TextStyle(
+                      fontSize: 28,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )),
       ),
     );
   }
