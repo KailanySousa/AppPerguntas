@@ -1,5 +1,7 @@
 import 'package:app/components/questao.dart';
+import 'package:app/components/questionario.dart';
 import 'package:app/components/resposta.dart';
+import 'package:app/components/resultado.dart';
 import 'package:flutter/material.dart';
 
 main() => runApp(PerguntaApp());
@@ -52,24 +54,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
           title: Text('Perguntas'),
         ),
         body: temPerguntaSelecionada
-            ? Column(
-                children: [
-                  Questao(_perguntas[_perguntaSelecionada]['texto']),
-                  ...respostas.map((e) => Resposta(e, _responder)).toList(),
-                ],
-              )
-            : Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(left: 10, right: 10),
-                child: Center(
-                  child: Text(
-                    'Só tenho duas coisas para dizer: Para béns!',
-                    style: TextStyle(
-                      fontSize: 28,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                )),
+            ? Questionario(_perguntas[_perguntaSelecionada]['texto'], respostas,
+                _responder)
+            : Resultado(),
       ),
     );
   }
