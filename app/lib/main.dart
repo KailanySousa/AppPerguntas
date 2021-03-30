@@ -12,25 +12,42 @@ class PerguntaApp extends StatefulWidget {
 // classe que controla o estado do widget
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaoTotal = 0;
 
   final List<Map<String, Object>> _perguntas = [
     {
       'texto': 'Qual é a sua cor favorita?',
-      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+      'respostas': [
+        {'texto': 'Preto', 'pontuacao': 8},
+        {'texto': 'Vermelho', 'pontuacao': 10},
+        {'texto': 'Branco', 'pontuacao': 6},
+        {'texto': 'Verde', 'pontuacao': 4},
+      ]
     },
     {
       'texto': 'Qual é o seu animal favorito?',
-      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
+      'respostas': [
+        {'texto': 'Elefante', 'pontuacao': 7},
+        {'texto': 'Leão', 'pontuacao': 4},
+        {'texto': 'Coelho', 'pontuacao': 10},
+        {'texto': 'Cobra', 'pontuacao': 2},
+      ]
     },
     {
       'texto': 'Qual é o seu instrutor favorito?',
-      'respostas': ['Maria', 'João', 'Leo', 'Pedro']
+      'respostas': [
+        {'texto': 'Kailany', 'pontuacao': 10},
+        {'texto': 'Maria', 'pontuacao': 6},
+        {'texto': 'João', 'pontuacao': 0},
+        {'texto': 'Pedro', 'pontuacao': 2},
+      ]
     }
   ];
 
-  void _responder() {
+  void _responder(int pontuacao) {
     if (temPerguntaSelecionada) {
       setState(() {
+        _pontuacaoTotal += pontuacao;
         _perguntaSelecionada++;
       });
     }
@@ -53,7 +70,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntaSelecionada: _perguntaSelecionada,
                 responder: _responder,
               )
-            : Resultado(),
+            : Resultado(_pontuacaoTotal),
       ),
     );
   }
